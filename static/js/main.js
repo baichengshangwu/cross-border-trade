@@ -1261,3 +1261,178 @@ showProductDetail = function(p) {
         }
     }
 };
+
+/* ═══════════════════════════════════════════════════
+   Market Ticker & Real-Time Quotes Panel
+   ═══════════════════════════════════════════════════ */
+
+const MARKET_DATA = {
+    tokens: [
+        { symbol: 'NEXUS', name: 'Nexus AI', price: 0.042, change: 5.2, volume: '2.4M' },
+        { symbol: 'ALNEX', name: 'Alliance Nexus', price: 0.0103, change: 3.1, volume: '8.1M' },
+        { symbol: 'AION', name: 'Aion Protocol', price: 1.87, change: -1.3, volume: '560K' },
+        { symbol: 'SYNAP', name: 'Synap Token', price: 0.215, change: 8.7, volume: '1.2M' },
+        { symbol: 'NEXAI', name: 'NexAI Coin', price: 3.45, change: -2.8, volume: '340K' },
+    ],
+    services: [
+        { name: 'GPT-4 API', provider: 'OpenAI', price: 12.00, unit: '/MTok', change: 0 },
+        { name: 'Claude 3 API', provider: 'Anthropic', price: 15.00, unit: '/MTok', change: -5.0 },
+        { name: 'Gemini Pro', provider: 'Google', price: 3.50, unit: '/MTok', change: 10.0 },
+        { name: 'Llama 3 70B', provider: 'Meta', price: 0.90, unit: '/MTok', change: 0 },
+        { name: 'Stable Diffusion XL', provider: 'Stability AI', price: 0.04, unit: '/image', change: 0 },
+    ],
+    events: [
+        { date: '2026-07-15', name_i18n: 'event_aidevcon', name: 'AI DevCon 2026 - Tickets Available', icon: '🎫' },
+        { date: '2026-07-20', name_i18n: 'event_nexus_launch', name: 'NEXUS Mainnet Launch', icon: '🚀' },
+        { date: '2026-08-01', name_i18n: 'event_alnex_staking', name: 'ALNEX Staking Rewards Double Week', icon: '💰' },
+    ],
+    notifications: [
+        { type_i18n: 'market_notification', type: 'Notification', text_i18n: 'notif_new_listing', text: 'New listing: GPT-4 @ $12/MTok', icon: '📢' },
+        { type_i18n: 'market_update', type: 'Market Update', text_i18n: 'update_nexus_surge', text: 'NEXUS +5.2% in last 24h', icon: '📈' },
+        { type_i18n: 'market_event', type: 'Event', text_i18n: 'event_aidevcon_short', text: 'AI DevCon tickets available', icon: '🎫' },
+        { type_i18n: 'market_listing', type: 'New Listing', text_i18n: 'listing_claude35', text: 'Claude 3.5 Sonnet @ $8/MTok', icon: '🆕' },
+        { type_i18n: 'market_update', type: 'Market Update', text_i18n: 'update_alnex_stake', text: 'ALNEX staking APY increased to 22%', icon: '📈' },
+        { type_i18n: 'market_notification', type: 'Notification', text_i18n: 'notif_volume', text: '24h volume exceeds $5M on ALNEX/USDT pair', icon: '🔥' },
+    ]
+};
+
+// Simulated price fluctuation
+function fluctuatePrice(base, range) {
+    return (base * (1 + (Math.random() - 0.5) * range * 2)).toFixed(4);
+}
+
+function refreshMarketData() {
+    MARKET_DATA.tokens.forEach(t => {
+        t.price = parseFloat(fluctuatePrice(t.price, 0.03));
+        t.change = parseFloat((t.change + (Math.random() - 0.5) * 1.5).toFixed(1));
+    });
+    MARKET_DATA.services.forEach(s => {
+        if (s.change !== 0) s.change = parseFloat((s.change + (Math.random() - 0.5) * 2).toFixed(1));
+    });
+}
+
+function renderTicker() {
+    const container = document.getElementById('ticker-items');
+    const dict = STATE.i18n;
+    let html = '';
+    const allItems = [...MARKET_DATA.notifications, ...MARKET_DATA.tokens.map(t => ({
+        type_i18n: 'market_update', type: dict['market_update'] || 'Market Update',
+        text: `${t.symbol} ${t.change >= 0 ? '+' : ''}${t.change}%`,
+        icon: t.change >= 0 ? '📈' : '📉', change: t.change
+    }))];
+
+    allItems.forEach(item => {
+        const typeLabel = dict[item.type_i18n] || item.type;
+        const textContent = item.text_i18n ? (dict[item.text_i18n] || item.text) : item.text;
+        const changeClass = item.change !== undefined ? (item.change >= 0 ? 'ticker-up' : 'ticker-down') : '';
+        html += `<div class="ticker-item">
+            <span class="ticker-icon">${item.icon}</span>
+            <span class="ticker-tag">${typeLabel}</span>
+            <span class="ticker-text ${changeClass}">${textContent}</span>
+        </div>`;
+    });
+
+    container.innerHTML = html;
+    document.getElementById('ticker-items-clone').innerHTML = html;
+}
+
+function renderMarketPanel() {
+    const dict = STATE.i18n;
+    // Tokens
+    let tokHTML = '<tr><th data-i18n="market_col_asset">Asset</th><th data-i18n="market_col_price">Price</th><th data-i18n="market_col_change">24h Chg</th><th data-i18n="market_col_volume">Volume</th></tr>';
+    MARKET_DATA.tokens.forEach(t => {
+        const chgClass = t.change >= 0 ? 'price-up' : 'price-down';
+        const chgSign = t.change >= 0 ? '+' : '';
+        tokHTML += `<tr>
+            <td><span class="symbol">${t.symbol}</span> <span class="name">${t.name}</span></td>
+            <td>$${t.price.toFixed(4)}</td>
+            <td class="${chgClass}">${chgSign}${t.change}%</td>
+            <td>${t.volume}</td>
+        </tr>`;
+    });
+    document.getElementById('market-tokens').innerHTML = tokHTML;
+
+    // Services
+    let svcHTML = '<tr><th data-i18n="market_col_service">Service</th><th data-i18n="market_col_price">Price</th><th data-i18n="market_col_change">24h Chg</th></tr>';
+    MARKET_DATA.services.forEach(s => {
+        const chgClass = s.change >= 0 ? 'price-up' : 'price-down';
+        const chgSign = s.change >= 0 ? '+' : '';
+        svcHTML += `<tr>
+            <td><span class="symbol">${s.name}</span> <span class="name">${s.provider}</span></td>
+            <td>$${s.price.toFixed(2)}${s.unit}</td>
+            <td class="${chgClass}">${s.change !== 0 ? chgSign + s.change + '%' : '-'}</td>
+        </tr>`;
+    });
+    document.getElementById('market-services').innerHTML = svcHTML;
+
+    // Events
+    let evtHTML = '';
+    MARKET_DATA.events.forEach(e => {
+        const name = dict[e.name_i18n] || e.name;
+        evtHTML += `<div class="market-event-item">
+            <span class="event-icon">${e.icon}</span>
+            <span class="event-name">${name}</span>
+            <span class="event-date">${e.date}</span>
+        </div>`;
+    });
+    document.getElementById('market-events').innerHTML = evtHTML;
+
+    // Refresh time
+    const now = new Date();
+    document.getElementById('market-refresh-time').textContent =
+        `${dict['market_updated'] || 'Updated'}: ${now.toLocaleTimeString()}`;
+
+    // Re-apply i18n for newly rendered elements
+    applyI18n();
+}
+
+function toggleMarketPanel() {
+    const panel = document.getElementById('market-panel');
+    const btn = document.querySelector('.ticker-expand-btn');
+    panel.classList.toggle('open');
+    btn.classList.toggle('open');
+    if (panel.classList.contains('open')) {
+        refreshMarketData();
+        renderMarketPanel();
+    }
+}
+
+// Periodic refresh
+let tickerInterval, panelInterval;
+function initMarketTicker() {
+    renderTicker();
+    refreshMarketData();
+    tickerInterval = setInterval(() => {
+        refreshMarketData();
+        renderTicker();
+    }, 15000);
+    panelInterval = setInterval(() => {
+        const panel = document.getElementById('market-panel');
+        if (panel.classList.contains('open')) {
+            refreshMarketData();
+            renderMarketPanel();
+        }
+    }, 10000);
+}
+
+// ── Override applyI18n to also refresh ticker and panel ──
+const origApplyI18n = applyI18n;
+applyI18n = function() {
+    origApplyI18n();
+    if (document.getElementById('ticker-items').children.length > 0) {
+        renderTicker();
+    }
+    const panel = document.getElementById('market-panel');
+    if (panel && panel.classList.contains('open')) {
+        renderMarketPanel();
+    }
+};
+
+// Init on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    initMarketTicker();
+    // Refresh ticker after first i18n load (which happens async)
+    setTimeout(() => {
+        renderTicker();
+    }, 1500);
+});

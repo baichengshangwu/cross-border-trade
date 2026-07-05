@@ -10,6 +10,39 @@
     <script src="https://www.paypal.com/sdk/js?client-id=BAAopNlOslfGxeREktaXu8cbdZ6XWXNbzQYeodvtXjmTISEt4Rxrb4pcjPOwR7FZN63ri345gSa9prPJfc&currency=USD"></script>
 </head>
 <body>
+    <!-- ── Market Ticker ── -->
+    <div class="market-ticker" id="market-ticker">
+        <div class="ticker-label" data-i18n="market_live">LIVE</div>
+        <div class="ticker-track" id="ticker-track">
+            <div class="ticker-items" id="ticker-items"></div>
+            <div class="ticker-items" id="ticker-items-clone"></div>
+        </div>
+        <button class="ticker-expand-btn" onclick="toggleMarketPanel()" data-i18n-title="market_title" title="Market Quotes">&#9650;</button>
+    </div>
+
+    <!-- ── Market Panel ── -->
+    <div class="market-panel" id="market-panel">
+        <div class="market-panel-header">
+            <h3 data-i18n="market_title">Market Quotes</h3>
+            <span class="market-refresh" id="market-refresh-time"></span>
+            <button class="market-panel-close" onclick="toggleMarketPanel()">&times;</button>
+        </div>
+        <div class="market-panel-body">
+            <div class="market-section">
+                <h4 data-i18n="market_section_tokens">Token Prices</h4>
+                <table class="market-table" id="market-tokens"></table>
+            </div>
+            <div class="market-section">
+                <h4 data-i18n="market_section_services">AI Services</h4>
+                <table class="market-table" id="market-services"></table>
+            </div>
+            <div class="market-section">
+                <h4 data-i18n="market_section_events">Events</h4>
+                <div class="market-events" id="market-events"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- ── Navigation ── -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
