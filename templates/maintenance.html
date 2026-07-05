@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="maintenance_title">System Maintenance</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #e0e0e0;
+}
+.container { text-align: center; padding: 2rem; }
+.icon { font-size: 4rem; margin-bottom: 1.5rem; }
+h1 { font-size: 2rem; margin-bottom: 0.75rem; color: #fff; }
+p { font-size: 1.1rem; color: #b0b0b0; margin-bottom: 2rem; line-height: 1.6; }
+.loader { display: inline-block; width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.2); border-top-color: #7c83ff; border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.lang-switch { margin-top: 2.5rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+.lang-switch button {
+  background: rgba(255,255,255,0.08); color: #aaa; border: 1px solid rgba(255,255,255,0.12);
+  padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
+}
+.lang-switch button:hover { background: rgba(255,255,255,0.15); color: #fff; }
+.lang-switch button.active { background: #7c83ff; color: #fff; border-color: #7c83ff; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="icon">&#x1F6E0;</div>
+  <h1 data-i18n="maintenance_title">System Under Maintenance</h1>
+  <p data-i18n="maintenance_desc">We're currently upgrading our platform to serve you better.<br>Please check back shortly.</p>
+  <div class="loader"></div>
+  <div class="lang-switch">
+    <button onclick="switchLang('en')">English</button>
+    <button onclick="switchLang('zh')">中文</button>
+    <button onclick="switchLang('ja')">日本語</button>
+    <button onclick="switchLang('ko')">한국어</button>
+    <button onclick="switchLang('es')">Español</button>
+    <button onclick="switchLang('fr')">Français</button>
+    <button onclick="switchLang('de')">Deutsch</button>
+    <button onclick="switchLang('pt')">Português</button>
+    <button onclick="switchLang('ru')">Русский</button>
+    <button onclick="switchLang('ar')">العربية</button>
+    <button onclick="switchLang('hi')">हिन्दी</button>
+    <button onclick="switchLang('it')">Italiano</button>
+  </div>
+</div>
+<script>
+const i18n = {
+  en: { maintenance_title: "System Under Maintenance", maintenance_desc: "We're currently upgrading our platform to serve you better.<br>Please check back shortly." },
+  zh: { maintenance_title: "系统升级维护中", maintenance_desc: "我们正在升级平台以提供更好的服务。<br>请稍后再来。" },
+  ja: { maintenance_title: "メンテナンス中", maintenance_desc: "より良いサービスを提供するため、現在システムをアップグレードしています。<br>しばらくしてから再度お試しください。" },
+  ko: { maintenance_title: "시스템 점검 중", maintenance_desc: "더 나은 서비스를 제공하기 위해 플랫폼을 업그레이드하고 있습니다.<br>잠시 후 다시 확인해 주세요." },
+  es: { maintenance_title: "Sistema en Mantenimiento", maintenance_desc: "Estamos actualizando nuestra plataforma para servirle mejor.<br>Vuelva a intentarlo en breve." },
+  fr: { maintenance_title: "Maintenance du Système", maintenance_desc: "Nous mettons à niveau notre plateforme pour mieux vous servir.<br>Veuillez revenir dans quelques instants." },
+  de: { maintenance_title: "Systemwartung", maintenance_desc: "Wir aktualisieren unsere Plattform, um Ihnen einen besseren Service zu bieten.<br>Bitte versuchen Sie es in Kürze erneut." },
+  pt: { maintenance_title: "Sistema em Manutenção", maintenance_desc: "Estamos atualizando nossa plataforma para atendê-lo melhor.<br>Por favor, volte em breve." },
+  ru: { maintenance_title: "Система на обслуживании", maintenance_desc: "Мы обновляем нашу платформу, чтобы обслуживать вас лучше.<br>Пожалуйста, зайдите позже." },
+  ar: { maintenance_title: "النظام قيد الصيانة", maintenance_desc: "نقوم بترقية منصتنا لخدمتك بشكل أفضل.<br>يرجى التحقق مرة أخرى قريباً." },
+  hi: { maintenance_title: "सिस्टम रखरखाव में", maintenance_desc: "हम आपकी बेहतर सेवा के लिए अपने प्लेटफ़ॉर्म को अपग्रेड कर रहे हैं।<br>कृपया थोड़ी देर बाद पुनः प्रयास करें।" },
+  it: { maintenance_title: "Sistema in Manutenzione", maintenance_desc: "Stiamo aggiornando la nostra piattaforma per servirvi meglio.<br>Riprovate tra poco." }
+};
+function switchLang(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang] && i18n[lang][key]) el.innerHTML = i18n[lang][key];
+  });
+  document.querySelectorAll('.lang-switch button').forEach(b => {
+    b.classList.toggle('active', b.textContent.trim().startsWith(i18n[lang].maintenance_title.charAt(0)) || b.getAttribute('onclick').includes("'"+lang+"'"));
+  });
+}
+// 自动检测浏览器语言
+const navLang = (navigator.language || 'en').split('-')[0];
+const supported = ['en','zh','ja','ko','es','fr','de','pt','ru','ar','hi','it'];
+if (supported.includes(navLang)) switchLang(navLang);
+else switchLang('en');
+</script>
+</body>
+</html>

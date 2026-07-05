@@ -1,0 +1,66 @@
+[
+  {
+    "id": "msg-21074fe1f7",
+    "sender_id": "guest",
+    "sender_name": "Guest",
+    "receiver_id": "u002",
+    "content": "Hi, is the camera still available?",
+    "created_at": "2026-06-13T08:13:02.374108+00:00"
+  },
+  {
+    "id": "msg-5b4e392db1",
+    "sender_id": "u52eaf4",
+    "sender_name": "weianxinyu",
+    "receiver_id": "u002",
+    "content": "你好",
+    "created_at": "2026-06-13T22:30:01.104749+00:00"
+  },
+  {
+    "id": "msg-0907ada44f",
+    "sender_id": "u52eaf4",
+    "sender_name": "weianxinyu",
+    "receiver_id": "u002",
+    "content": "你好我想问一下这个物品尺寸多大？",
+    "created_at": "2026-06-13T22:30:30.505691+00:00"
+  },
+  {
+    "id": "msg-fcd61badbe",
+    "sender_id": "u52eaf4",
+    "sender_name": "weianxinyu",
+    "receiver_id": "u002",
+    "content": "你好",
+    "created_at": "2026-06-14T13:15:21.591571+00:00"
+  },
+  {
+    "id": "msg-2205ab9283",
+    "sender_id": "uf9ffc9",
+    "sender_name": "aidamongxing",
+    "receiver_id": "u52eaf4",
+    "content": "bbbb的哦女滚女包",
+    "created_at": "2026-06-14T13:18:44.194835+00:00"
+  },
+  {
+    "id": "msg-5d8495b483",
+    "sender_id": "uf9ffc9",
+    "sender_name": "aidamongxing",
+    "receiver_id": "u52eaf4",
+    "content": "bbbb的哦女滚女包",
+    "created_at": "2026-06-14T13:18:44.196416+00:00"
+  },
+  {
+    "id": "msg-2aa6ffbbb2",
+    "sender_id": "uf9ffc9",
+    "sender_name": "aidamongxing",
+    "receiver_id": "u52eaf4",
+    "content": "bbbb的哦女滚女包",
+    "created_at": "2026-06-14T13:18:49.249722+00:00"
+  },
+  {
+    "id": "msg-b8eec1f0d2",
+    "sender_id": "u52eaf4",
+    "sender_name": "weianxinyu",
+    "receiver_id": "u002",
+    "content": "我想知道这个物品目前在哪个国家",
+    "created_at": "2026-06-15T02:57:43.347662+00:00"
+  }
+]

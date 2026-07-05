@@ -1,0 +1,203 @@
+[
+  {
+    "id": "p2cb84922",
+    "seller_id": "u52eaf4",
+    "seller_name": "weianxinyu",
+    "title": "二手工程机械出售",
+    "description": "徐工轮式自行机械车 装载机\n50铲车",
+    "category": "other",
+    "price": 50000.0,
+    "currency": "CNY",
+    "condition": "good",
+    "location": "中国.上海",
+    "images": [
+      ""
+    ],
+    "status": "active",
+    "created_at": "2026-06-13T23:02:04Z"
+  },
+  {
+    "id": "p001",
+    "seller_id": "u001",
+    "seller_name": "Alice (US)",
+    "title_i18n": {
+      "en": "iPhone 14 Pro 128GB - Excellent Condition",
+      "zh": "iPhone 14 Pro 128GB - 九成新"
+    },
+    "description_i18n": {
+      "en": "Used for 6 months, no scratches. Includes original box and charger.",
+      "zh": "使用6个月，无划痕，含原装盒和充电器"
+    },
+    "category": "electronics",
+    "price": 699.0,
+    "currency": "USD",
+    "condition": "like_new",
+    "location": "New York, USA",
+    "images": [
+      "https://picsum.photos/seed/iphone14/400/400"
+    ],
+    "status": "active",
+    "created_at": "2026-05-15T08:00:00Z"
+  },
+  {
+    "id": "p002",
+    "seller_id": "u002",
+    "seller_name": "Li Wei (CN)",
+    "title_i18n": {
+      "en": "Canon EOS R6 Camera Body",
+      "zh": "佳能 EOS R6 相机机身"
+    },
+    "description_i18n": {
+      "en": "Shutter count ~5000. Perfect for photography enthusiasts.",
+      "zh": "快门约5000次，适合摄影爱好者"
+    },
+    "category": "electronics",
+    "price": 1200.0,
+    "currency": "CNY",
+    "condition": "good",
+    "location": "Shanghai, China",
+    "images": [
+      "https://picsum.photos/seed/canonr6/400/400"
+    ],
+    "status": "active",
+    "created_at": "2026-05-20T10:30:00Z"
+  },
+  {
+    "id": "p003",
+    "seller_id": "u003",
+    "seller_name": "Carlos (ES)",
+    "title_i18n": {
+      "en": "Vintage Acoustic Guitar - Yamaha FG800",
+      "zh": "复古原声吉他 - 雅马哈 FG800"
+    },
+    "description_i18n": {
+      "en": "Well-maintained, great sound. Local pickup preferred.",
+      "zh": "保养良好，音色出色。优先本地自取"
+    },
+    "category": "instruments",
+    "price": 180.0,
+    "currency": "EUR",
+    "condition": "fair",
+    "location": "Barcelona, Spain",
+    "images": [
+      "https://picsum.photos/seed/guitar/400/400"
+    ],
+    "status": "active",
+    "created_at": "2026-05-22T14:15:00Z"
+  },
+  {
+    "id": "p004",
+    "seller_id": "u004",
+    "seller_name": "Yuki (JP)",
+    "title_i18n": {
+      "en": "Nintendo Switch OLED - White",
+      "zh": "任天堂 Switch OLED - 白色"
+    },
+    "description_i18n": {
+      "en": "Barely used, includes 3 games (Zelda, Mario Kart, Splatoon).",
+      "zh": "几乎全新，含3款游戏（塞尔达、马车、喷射战士）"
+    },
+    "category": "electronics",
+    "price": 32000,
+    "currency": "JPY",
+    "condition": "like_new",
+    "location": "Tokyo, Japan",
+    "images": [
+      "https://picsum.photos/seed/switch/400/400"
+    ],
+    "status": "active",
+    "created_at": "2026-05-25T09:00:00Z"
+  },
+  {
+    "id": "p005",
+    "seller_id": "u005",
+    "seller_name": "Emma (UK)",
+    "title_i18n": {
+      "en": "Designer Handbag - Coach Willow Tote",
+      "zh": "设计师手提包 - Coach Willow 托特包"
+    },
+    "description_i18n": {
+      "en": "Genuine leather, used twice. With dust bag and receipt.",
+      "zh": "真皮，仅用过两次。含防尘袋和收据"
+    },
+    "category": "fashion",
+    "price": 150.0,
+    "currency": "GBP",
+    "condition": "like_new",
+    "location": "London, UK",
+    "images": [
+      "https://picsum.photos/seed/handbag/400/400"
+    ],
+    "status": "active",
+    "created_at": "2026-06-01T11:20:00Z"
+  },
+  {
+    "id": "p006",
+    "seller_id": "u006",
+    "seller_name": "Mohammed (AE)",
+    "title_i18n": {
+      "en": "Mountain Bike - Trek Marlin 7 2025",
+      "zh": "山地自行车 - Trek Marlin 7 2025款"
+    },
+    "description_i18n": {
+      "en": "Size M, hydraulic disc brakes. Great for trails.",
+      "zh": "M号，液压碟刹，适合越野"
+    },
+    "category": "sports",
+    "price": 2500,
+    "currency": "AED",
+    "condition": "good",
+    "location": "Dubai, UAE",
+    "images": [
+      "https://picsum.photos/seed/bike/400/400"
+    ],
+    "status": "active",
+    "created_at": "2026-06-05T16:00:00Z"
+  },
+  {
+    "id": "p007",
+    "seller_id": "u001",
+    "seller_name": "Alice (US)",
+    "title_i18n": {
+      "en": "Kindle Paperwhite 11th Gen",
+      "zh": "Kindle Paperwhite 第11代"
+    },
+    "description_i18n": {
+      "en": "8GB, with leather case. Perfect for reading.",
+      "zh": "8GB，含皮套。阅读神器"
+    },
+    "category": "electronics",
+    "price": 79.0,
+    "currency": "USD",
+    "condition": "good",
+    "location": "New York, USA",
+    "images": [
+      "https://picsum.photos/seed/kindle/400/400"
+    ],
+    "status": "active",
+    "created_at": "2026-06-08T07:30:00Z"
+  },
+  {
+    "id": "p008",
+    "seller_id": "u002",
+    "seller_name": "Li Wei (CN)",
+    "title_i18n": {
+      "en": "LEGO Star Wars Millennium Falcon 75192",
+      "zh": "乐高星球大战千年隼 75192"
+    },
+    "description_i18n": {
+      "en": "Complete set, assembled once. 7541 pieces.",
+      "zh": "完整套装，拼过一次。7541片"
+    },
+    "category": "toys",
+    "price": 3800,
+    "currency": "CNY",
+    "condition": "like_new",
+    "location": "Shanghai, China",
+    "images": [
+      "https://picsum.photos/seed/lego/400/400"
+    ],
+    "status": "active",
+    "created_at": "2026-06-10T13:45:00Z"
+  }
+]

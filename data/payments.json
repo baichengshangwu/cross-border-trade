@@ -1,0 +1,48 @@
+{
+  "pay-0838c15737c5": {
+    "id": "pay-0838c15737c5",
+    "order_id": "ord-4e40be0b4b",
+    "amount": 50000.0,
+    "currency": "CNY",
+    "method": "card",
+    "status": "pending",
+    "created_at": "2026-06-14T01:41:24.491388+00:00"
+  },
+  "pay-7f22c380a699": {
+    "id": "pay-7f22c380a699",
+    "order_id": "ord-4e40be0b4b",
+    "amount": 50000.0,
+    "currency": "CNY",
+    "method": "card",
+    "status": "paid",
+    "created_at": "2026-06-14T01:41:24.498599+00:00",
+    "paid_at": "2026-06-14T01:41:24.511947+00:00"
+  },
+  "pay-bfb99e2a3be0": {
+    "id": "pay-bfb99e2a3be0",
+    "order_id": "ord-64377f43ab",
+    "amount": 50000.0,
+    "currency": "CNY",
+    "method": "paypal",
+    "status": "pending",
+    "created_at": "2026-06-14T03:15:52.328051+00:00"
+  },
+  "pay-aa4fce183349": {
+    "id": "pay-aa4fce183349",
+    "order_id": "ord-454fe07a55",
+    "amount": 50000.0,
+    "currency": "CNY",
+    "method": "paypal",
+    "status": "pending",
+    "created_at": "2026-06-14T03:18:59.084107+00:00"
+  },
+  "pay-10348e0d6e25": {
+    "id": "pay-10348e0d6e25",
+    "order_id": "ord-7774704444",
+    "amount": 50000.0,
+    "currency": "CNY",
+    "method": "paypal",
+    "status": "pending",
+    "created_at": "2026-06-14T12:17:29.294300+00:00"
+  }
+}

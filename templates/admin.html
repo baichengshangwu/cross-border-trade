@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="admin_title">Admin Panel - Cross-Border Trade</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+    <nav class="navbar admin-nav">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                <span data-i18n="app_name">Cross-Border Trade</span>
+            </a>
+            <div class="nav-links">
+                <a href="/" target="_blank" data-i18n="admin_frontend">Frontend</a>
+                <a href="#" onclick="adminLogout()" data-i18n="nav_logout">Logout</a>
+            </div>
+            <div class="nav-actions">
+                <select id="lang-switcher" onchange="switchAdminLang(this.value)">
+                    <option value="en">English</option>
+                    <option value="zh">中文</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="ja">日本語</option>
+                    <option value="ko">한국어</option>
+                    <option value="pt">Português</option>
+                    <option value="ar">العربية</option>
+                    <option value="ru">Русский</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="it">Italiano</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login -->
+    <div id="admin-login" class="admin-login">
+        <div class="auth-container">
+            <h2 style="text-align:center;padding:24px 0 0;">Admin Panel</h2>
+            <form class="auth-form active" onsubmit="adminLogin(event)">
+                <input type="password" id="admin-password" data-i18n-placeholder="admin_password" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary" data-i18n="nav_login">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <main id="admin-dashboard" style="display:none">
+        <div class="admin-container">
+            <aside class="admin-sidebar">
+                <a href="#" class="sidebar-link active" data-tab="overview" data-i18n="admin_overview">Overview</a>
+                <a href="#" class="sidebar-link" data-tab="products" data-i18n="admin_products">Products</a>
+                <a href="#" class="sidebar-link" data-tab="orders" data-i18n="admin_orders">Orders</a>
+                <a href="#" class="sidebar-link" data-tab="users" data-i18n="admin_users">Users</a>
+            </aside>
+
+            <div class="admin-content">
+                <!-- Overview -->
+                <div id="tab-overview" class="admin-tab active">
+                    <h1 data-i18n="admin_dashboard">Dashboard Overview</h1>
+                    <div class="stats-grid" id="stats-grid"></div>
+                    <div class="chart-row">
+                        <div class="chart-box">
+                            <h3 data-i18n="admin_orders_status">Orders by Status</h3>
+                            <div id="chart-orders-status"></div>
+                        </div>
+                        <div class="chart-box">
+                            <h3 data-i18n="admin_products_cat">Products by Category</h3>
+                            <div id="chart-products-cat"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products -->
+                <div id="tab-products" class="admin-tab">
+                    <h1 data-i18n="admin_product_mgmt">Product Management</h1>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th data-i18n="admin_col_id">ID</th><th data-i18n="admin_col_title">Title (EN)</th><th data-i18n="admin_col_price">Price</th><th data-i18n="admin_col_seller">Seller</th><th data-i18n="admin_col_status">Status</th><th data-i18n="admin_col_actions">Actions</th></tr>
+                        </thead>
+                        <tbody id="table-products"></tbody>
+                    </table>
+                </div>
+
+                <!-- Orders -->
+                <div id="tab-orders" class="admin-tab">
+                    <h1 data-i18n="admin_order_mgmt">Order Management</h1>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th data-i18n="admin_col_order_id">Order ID</th><th data-i18n="admin_col_product">Product</th><th data-i18n="admin_col_amount">Amount</th><th data-i18n="admin_col_buyer">Buyer</th><th data-i18n="admin_col_status">Status</th><th data-i18n="admin_col_actions">Actions</th></tr>
+                        </thead>
+                        <tbody id="table-orders"></tbody>
+                    </table>
+                </div>
+
+                <!-- Users -->
+                <div id="tab-users" class="admin-tab">
+                    <h1 data-i18n="admin_user_mgmt">User Management</h1>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th data-i18n="admin_col_email">Email</th><th data-i18n="admin_col_name">Name</th><th data-i18n="admin_col_reputation">Reputation</th><th data-i18n="admin_col_currency">Currency</th><th data-i18n="admin_col_joined">Joined</th></tr>
+                        </thead>
+                        <tbody id="table-users"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/static/js/admin.js"></script>
+</body>
+</html>
